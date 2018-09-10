@@ -16,3 +16,9 @@ class RankItem(scrapy.Item):
     average_big = Field()
     average_small = Field()
     link = Field()
+
+
+class MovieItem(scrapy.Item):
+    title = Field()
+    cover = Field()
+    link = Field()

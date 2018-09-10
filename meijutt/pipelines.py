@@ -5,12 +5,11 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import codecs
-import json
 
 
 class RankTxtline(object):
     def open_spider(self, spider):
-        self.file = codecs.open(spider.name + '.txt', 'w', 'utf-8')
+        self.file = codecs.open(spider.name + '.cvs', 'w', 'utf-8')
 
     def close_file(self, spider):
         self.file.close()
@@ -38,7 +37,21 @@ class RankJsonLine(object):
         self.file.close()
 
     def process_item(self, item, spider):
-        items = item["items"]
-        line = json.dumps(list(items))
-        self.file.write(line + "\n")
+        # items = item["items"]
+        # line = json.dumps(dict(item), ensure_ascii=False) + "\n"
+        # self.file.write(line)
+        return item
+
+
+class MovieTxtLine(object):
+    def open_spider(self, spider):
+        self.file = codecs.open(spider.name + '.txt', 'w', 'utf-8')
+
+    def close_file(self, spider):
+        self.file.close()
+
+    def process_item(self, item, spider):
+        line = item['title'] + " " + item['cover'] + " " + item['link']
+        line += '\r\n'
+        self.file.write(line)
         return item

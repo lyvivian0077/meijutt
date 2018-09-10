@@ -1,3 +1,3 @@
 import scrapy.cmdline
 
-scrapy.cmdline.execute(['scrapy', 'crawl', 'rank'])
+scrapy.cmdline.execute(['scrapy', 'crawl', 'home'])

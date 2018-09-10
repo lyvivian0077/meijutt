@@ -14,8 +14,9 @@ BOT_NAME = 'meijutt'
 SPIDER_MODULES = ['meijutt.spiders']
 NEWSPIDER_MODULE = 'meijutt.spiders'
 ITEM_PIPELINES = {
-    'meijutt.pipelines.RankTxtline': 100,
-    'meijutt.pipelines.RankJsonLine': 200,
+    'meijutt.pipelines.MovieTxtLine': 50,
+    # 'meijutt.pipelines.RankTxtline': 100,
+    # 'meijutt.pipelines.RankJsonLine': 200,
 }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
