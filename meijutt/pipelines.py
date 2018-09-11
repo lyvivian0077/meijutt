@@ -45,13 +45,16 @@ class RankJsonLine(object):
 
 class MovieTxtLine(object):
     def open_spider(self, spider):
-        self.file = codecs.open(spider.name + '.txt', 'w', 'utf-8')
+        self.file = codecs.open(spider.name + '5.csv', 'w', 'utf-8')
+        line = '标题' + "," + '封面' + "," + '链接'
+        line += '\r\n'
+        self.file.write(line)
 
     def close_file(self, spider):
         self.file.close()
 
     def process_item(self, item, spider):
-        line = item['title'] + " " + item['cover'] + " " + item['link']
+        line = item['title'] + "," + item['cover'] + "," + item['link']
         line += '\r\n'
         self.file.write(line)
         return item
